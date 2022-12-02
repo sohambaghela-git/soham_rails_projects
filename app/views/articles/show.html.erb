@@ -1,0 +1,54 @@
+<h2> Welcome Page  </h2>
+<div style="width:100%; float:left;">
+
+    <div style="width:49%; float:left; ">
+        <h4><%= @article.heading  %></h4>
+    </div>
+    <div style="width:49%; float:left; ">
+        <h4><%= @article.data  %></h4>
+    </div>
+</div>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+
+<% if false %>
+ #To show the Comment %> 
+<% end %>
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<% if false %>
+    #To Add/Give the Comment
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :data %><br>
+    <%= form.text_area :data %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

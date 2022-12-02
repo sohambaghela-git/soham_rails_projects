@@ -1,0 +1,22 @@
+<h2> This is my first Project of Rails </h2>
+	
+<table>
+ 		<tr>
+  		<td><b>Heading</b></td>
+			<td></td>
+  		<td><b>Data</b></td>
+ 		</tr>
+	<% @articles.each do |article| %>
+ 		<tr>
+  		<td>
+				<%= link_to article.heading, article %>
+			</td>
+			<td></td>
+  		<td>
+				<%= link_to article.data,article %>
+			</td>
+ 		</tr>
+	<% end %>
+</table>
+<br>
+<%= link_to "New Article", new_article_path %>
