@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+
+  http_basic_authenticate_with name: "abc", password: "12345", except: [:index, :show]
   # Home Page
   def index
     @articles=Article.all
@@ -16,7 +18,7 @@ class ArticlesController < ApplicationController
   # To Create New Article
   def create 
     @article=Article.new(article_params)
-    # To Save data in DB
+    # To Save data in DB 
     if @article.save
       redirect_to @article 
     else  
@@ -47,7 +49,7 @@ class ArticlesController < ApplicationController
   # To give permition to data to connect with DB 
   private 
     def article_params 
-      params.require(:article).permit(:heading, :data)
+      params.require(:article).permit(:heading, :data, :status)
     end
 
 end

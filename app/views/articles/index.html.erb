@@ -1,21 +1,28 @@
 <h2> This is my first Project of Rails </h2>
-	
+
+Our blog has <%= Article.public_count %> articles and counting!
+
 <table>
  		<tr>
-  		<td><b>Heading</b></td>
+			<td><b>S. No</b></td>
 			<td></td>
-  		<td><b>Data</b></td>
+  		<td><b>Heading</b></td>
+			
+  	
  		</tr>
 	<% @articles.each do |article| %>
- 		<tr>
-  		<td>
+		<% unless article.archived? %>
+ 			<tr>
+				<td>
+					<p><%= article.id %><p>
+				</td><td></td>
+  			<td>
 				<%= link_to article.heading, article %>
-			</td>
-			<td></td>
-  		<td>
-				<%= link_to article.data,article %>
-			</td>
- 		</tr>
+				</td>
+				<td></td>
+  			
+ 			</tr>
+		<% end %>
 	<% end %>
 </table>
 <br>

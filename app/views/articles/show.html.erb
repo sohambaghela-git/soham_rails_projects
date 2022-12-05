@@ -22,33 +22,10 @@
  #To show the Comment %> 
 <% end %>
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
-
+  <%= render @article.comments %>
 <% if false %>
     #To Add/Give the Comment
 <% end %>
 
 <h2>Add a comment:</h2>
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :data %><br>
-    <%= form.text_area :data %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  <%= render 'comments/form' %>
