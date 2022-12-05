@@ -1,11 +1,10 @@
 <h2> This is my first Project of Rails </h2>
 
 Our blog has <%= Article.public_count %> articles and counting!
-
+<br></br>
 <table>
+	
  		<tr>
-			<td><b>S. No</b></td>
-			<td></td>
   		<td><b>Heading</b></td>
 			
   	
@@ -13,12 +12,9 @@ Our blog has <%= Article.public_count %> articles and counting!
 	<% @articles.each do |article| %>
 		<% unless article.archived? %>
  			<tr>
-				<td>
-					<p><%= article.id %><p>
-				</td><td></td>
   			<td>
 				<%= link_to article.heading, article %>
-				</td>
+				</td>	
 				<td></td>
   			
  			</tr>
